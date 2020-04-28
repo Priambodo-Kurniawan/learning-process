@@ -2,7 +2,7 @@
   "development": {
     "username": "me",
     "password": "password",
-    "database": "db_favorite_song",
+    "database": "db_favorite_song2",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false

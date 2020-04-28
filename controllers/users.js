@@ -23,7 +23,7 @@ class UserControllers {
       })
   }
 
-  static signin (req, res) {
+  static signin (req, res, next) {
     let { email, password } = req.body
 
     User.findOne({
@@ -43,21 +43,20 @@ class UserControllers {
               token
             })
           } else {
-            res.status(401).json({
-              msg: 'please login first!'
-            })
+            throw {
+              msg: 'email/password not match',
+              code: 401
+            }
           }
-
         } else {
-          res.status(401).json({
-            msg: 'please login first!'
-          })
+          throw {
+            msg: 'email/password not match',
+            code: 401
+          }
         }
       })
       .catch(err => {
-        res.status(500).json({
-          errors: err
-        })
+        next(err)
       })
   }
 }
